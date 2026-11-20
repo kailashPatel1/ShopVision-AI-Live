@@ -3,6 +3,7 @@ from config import Config
 from models import db, login_manager
 import os
 
+
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
@@ -16,6 +17,8 @@ def create_app(config_class=Config):
         # Import routes here to avoid circular imports
         from routes import bp as main_bp
         app.register_blueprint(main_bp)
+
+
         
         # Create db tables if they don't exist
         db.create_all()
